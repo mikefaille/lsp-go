@@ -11,7 +11,7 @@
 (require 'lsp-mode)
 
 (lsp-define-stdio-client lsp-go "go" #'(lambda () default-directory)
-			 '("go-langserver" "-mode=stdio")
+			 '("go-langserver" "-mode=stdio" "-gocodecompletion")
 			 :ignore-regexps
 			 '("^langserver-go: reading on stdin, writing on stdout$"))
 
