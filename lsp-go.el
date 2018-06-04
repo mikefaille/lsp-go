@@ -16,6 +16,7 @@
 
 (defcustom lsp-go-executable-path (executable-find "go-langserver")
   "Path to the go-langserver executable."
+  :type 'string
   :group 'lsp-go)
 
 (lsp-define-stdio-client lsp-go "go" #'(lambda () default-directory)
