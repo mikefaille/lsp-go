@@ -10,8 +10,17 @@
 
 (require 'lsp-mode)
 
+(defgroup lsp-go nil
+  "lsp-go settings"
+  :group 'tools)
+
+(defcustom lsp-go-executable-path (executable-find "go-langserver")
+  "Path to the go-langserver executable."
+  :type 'string
+  :group 'lsp-go)
+
 (lsp-define-stdio-client lsp-go "go" #'(lambda () default-directory)
-			 '("go-langserver" "-mode=stdio" "-gocodecompletion")
+			 `(,lsp-go-executable-path "-mode=stdio" "-gocodecompletion")
 			 :ignore-regexps
 			 '("^langserver-go: reading on stdin, writing on stdout$"))
 
