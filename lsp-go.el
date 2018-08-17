@@ -19,10 +19,17 @@
   :type 'string
   :group 'lsp-go)
 
+(defcustom lsp-go-language-server-flags '("-gocodecompletion")
+  "Extra arguments for the go-langserver"
+  :type '(repeat string)
+  :group 'lsp-go)
+
 (lsp-define-stdio-client lsp-go "go" #'(lambda () default-directory)
-			 `(,lsp-go-executable-path "-mode=stdio" "-gocodecompletion")
-			 :ignore-regexps
-			 '("^langserver-go: reading on stdin, writing on stdout$"))
+                         `(,lsp-go-executable-path
+                           "-mode=stdio"
+                           ,@lsp-go-language-server-flags)
+                         :ignore-regexps
+                         '("^langserver-go: reading on stdin, writing on stdout$"))
 
 (provide 'lsp-go)
 ;;; lsp-go.el ends here
