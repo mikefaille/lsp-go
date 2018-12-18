@@ -9,5 +9,5 @@ Go support for `lsp-mode` using [Sourcegraph's Go Language Server](https://githu
 You will need to call `lsp-go-enable` when editing `.go` files. You can use the following in your Emacs init file:
 
 ```lisp
-(add-hook 'go-mode-hook #'lsp-go-enable)
+(add-hook 'go-mode-hook #'lsp)
 ```
